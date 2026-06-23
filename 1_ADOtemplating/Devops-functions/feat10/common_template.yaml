@@ -1,0 +1,36 @@
+parameters:
+  - name: flavour
+    displayName: Process Flavours
+    type: object
+    default:
+
+stages:
+
+  - stage: Build
+    pool:
+      name: $[variables.POOL_RELEASE]
+    variables:
+      - group: qualitygatevars
+      - name: commit_id
+        value: $[stageDependencies.InstallPkgsStage.InstallPkgsJob.outputs['GetCommit.commit_id']]
+      - ${{ if parameters.flavour.buildParameters }}:
+        - ${{ parameters.flavour.buildParameters }}
+    displayName: Build
+    jobs:
+      - job: Build
+        workspace:
+          clean: all
+        displayName: Build
+        steps:
+          - ${{ if parameters.flavour.preTasks }}:
+            - ${{ each task in parameters.flavour.preTasks  }}:
+              - template: ${{ task }}
+          
+          - ${{ if parameters.flavour.buildTasks }}:
+            - ${{ each task in parameters.flavour.buildTasks  }}:
+              - template: ${{ task }}
+
+          - ${{ if parameters.flavour.postTasks }}:
+            - ${{ each task in parameters.flavour.postTasks  }}:
+              - template: ${{ task }}
+		

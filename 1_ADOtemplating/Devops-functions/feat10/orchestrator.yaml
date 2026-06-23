@@ -1,0 +1,11 @@
+parameters:
+  - name: flavour
+    displayName: Process Flavours
+    type: object
+    default:
+
+stages:
+  - ${{ if parameters.flavour.buildFlow }}:
+      - template: ${{ parameters.flavour.buildFlow }}
+        parameters:
+          flavour: ${{ parameters.flavour }}

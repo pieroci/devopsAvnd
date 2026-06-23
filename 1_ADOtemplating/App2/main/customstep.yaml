@@ -1,0 +1,11 @@
+steps:
+  - task: SSH@0
+    displayName: 'Log this!'
+    inputs:
+      sshEndpoint: $(sshServiceConnection)
+      runOptions: inline
+      inline: |
+        set -euo pipefail
+        echo "Enjoy! I'm the NUMBER 2"
+  - powershell: echo "##vso[task.setvariable variable=a;isOutput=true]5"
+    name: a_step
