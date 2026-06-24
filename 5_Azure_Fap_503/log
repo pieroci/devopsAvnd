@@ -1,0 +1,35 @@
+Azure Function Deploy: miafap
+
+View raw log
+
+Starting: Azure Function Deploy: miafap
+==============================================================================
+Task         : Azure Functions Deploy
+Description  : Update a function app with .NET, Python, JavaScript, PowerShell, Java based web applications
+Version      : 2.275.1
+Author       : Microsoft Corporation
+Help         : https://aka.ms/azurefunctiontroubleshooting
+==============================================================================
+Got service connection details for Azure App Service:'miafap'
+NOTE: Function app has private endpoint(s). Therefore, make sure that you are running this pipeline from a self-hosted agent that has access to the Functions App.
+NOTE: Function app is VNet integrated.
+Updating App Service Application settings. Data: {"WEBSITES_ENABLE_APP_SERVICE_STORAGE":"true","WEBSITE_RUN_FROM_PACKAGE":"1"}
+App Service Application settings are already present.
+Package deployment using ZIP Deploy initiated.
+##[error]Failed to deploy web package to App Service.
+##[warning]Can't find loc string for key: KuduStackTraceURL
+##[error]KuduStackTraceURL https://$miafap:***@miafap.scm.azurewebsites.net/api/vfs/LogFiles/kudu/trace
+##[error]Error: Error: Failed to deploy web package to App Service. Service Unavailable (CODE: 503)
+Successfully added release annotation to the Application Insight : ais-cxd-eus-prd
+##[warning]Error: Failed to update deployment history. Error: Service Unavailable (CODE: 503)
+App Service Application URL: https://miafap.azurewebsites.net
+Finishing: Azure Function Deploy: miafap
+
+
+
+# Yesterday has been released! Why Yoday doesn't work?
+# NO errors visible on Fap Azure Dashboard.
+# Diagnostic doesn't show anything usefull
+# All Metrics are OK!
+# Fap status is "RUNNING"!
+# WTF!!! What you'll focus on?
